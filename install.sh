@@ -8,7 +8,8 @@ set -e
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INSTALL_DIR="${1:-$HOME/scripts}"
 LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"
-LABEL="cursoruiviewservice-watchdog"
+LABEL="com.github.tollfree.cursoruiviewservice-watchdog"
+SHORT_NAME="cursoruiviewservice-watchdog"
 
 case "$INSTALL_DIR" in
   *"Mobile Documents"*|*iCloud*)
@@ -29,7 +30,7 @@ chmod +x "$INSTALL_DIR/cursoruiviewservice-watchdog.sh"
 chmod +x "$INSTALL_DIR/cursoruiviewservice-watchdog.command"
 
 sed "s|__INSTALL_DIR__|$INSTALL_DIR|g" \
-  "$SRC_DIR/cursoruiviewservice-watchdog.plist.template" \
+  "$SRC_DIR/com.github.tollfree.cursoruiviewservice-watchdog.plist.template" \
   > "$LAUNCH_AGENTS_DIR/$LABEL.plist"
 
 plutil -lint "$LAUNCH_AGENTS_DIR/$LABEL.plist"
@@ -40,7 +41,7 @@ launchctl bootstrap "gui/$(id -u)" "$LAUNCH_AGENTS_DIR/$LABEL.plist"
 echo
 echo "Installed to: $INSTALL_DIR"
 echo "LaunchAgent:  $LAUNCH_AGENTS_DIR/$LABEL.plist"
-echo "Log:          /tmp/$LABEL.log"
+echo "Log:          /tmp/$SHORT_NAME.log"
 echo
 echo "Check status: launchctl print gui/$(id -u)/$LABEL"
-echo "Tail log:     tail -f /tmp/$LABEL.log"
+echo "Tail log:     tail -f /tmp/$SHORT_NAME.log"

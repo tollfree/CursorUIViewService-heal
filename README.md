@@ -58,6 +58,6 @@ Edit the installed `cursoruiviewservice-watchdog.sh` directly:
 ## Check it's working
 
 ```
-launchctl print gui/$(id -u)/cursoruiviewservice-watchdog
+launchctl print gui/$(id -u)/com.github.tollfree.cursoruiviewservice-watchdog
 tail -f /tmp/cursoruiviewservice-watchdog.log
 ```

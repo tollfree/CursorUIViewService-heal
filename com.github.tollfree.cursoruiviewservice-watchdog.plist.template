@@ -4,7 +4,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>cursoruiviewservice-watchdog</string>
+  <string>com.github.tollfree.cursoruiviewservice-watchdog</string>
   <key>Program</key>
   <string>__INSTALL_DIR__/cursoruiviewservice-watchdog.command</string>
   <key>WorkingDirectory</key>
